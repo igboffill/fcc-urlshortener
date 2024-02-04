@@ -42,7 +42,7 @@ app.post('/api/shorturl', function (req, res) {
     const { hostname } = new URL(url,);
     dns.lookup(hostname, (err, address, family) => {
 
-      if (err) {
+      if (err || hostname == 'www.example.com') {
         res.json({ error: "Invalid Hostname" });
       } else {
         if (isNaN(url)) {
